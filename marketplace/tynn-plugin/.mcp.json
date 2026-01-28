@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "tynn": {
+    "tynn-mcp": {
       "type": "sse",
       "url": "${TYNN_API_URL:-https://app.tynn.ai}/mcp/tynn",
       "headers": {
