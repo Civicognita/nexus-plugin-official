@@ -1,35 +1,13 @@
 {
   "name": "nexus-plugin-official",
   "owner": {
-    "name": "Civicognita",
-    "email": "plugins@civicognita.com"
-  },
-  "metadata": {
-    "description": "Official Nexus plugins for Claude Code - project management, workflow automation, and development tools",
-    "version": "1.0.0"
+    "name": "Civicognita"
   },
   "plugins": [
     {
       "name": "tynn",
       "source": "./marketplace/tynn-plugin",
-      "description": "Tynn project management integration for Claude Code. Plan, build, and track work with the clever fox.",
-      "version": "0.2.0",
-      "author": {
-        "name": "Tynn.ai",
-        "email": "hello@tynn.ai"
-      },
-      "homepage": "https://tynn.ai",
-      "repository": "https://github.com/Civicognita/nexus-plugin-official",
-      "license": "MIT",
-      "keywords": [
-        "project-management",
-        "workflow",
-        "planning",
-        "tasks",
-        "agile",
-        "tynn"
-      ],
-      "category": "productivity"
+      "description": "Tynn project management integration for Claude Code"
     }
   ]
 }
