@@ -54,6 +54,6 @@ tynn-claude-tooling/
 ## Implementation Phases
 
 - [x] Phase 1: Core plugin (manifest, setup/think/build/wish skills, session-start hook)
-- [ ] Phase 2: Demo mode (local storage, TYNN.md sync, migration)
+- [x] Phase 2: Demo mode (local storage, TYNN.md sync, migration)
 - [ ] Phase 3: Advanced (VIP, Audit skills, post-commit hook, tynn-assistant agent)
 - [ ] Phase 4: Marketplace (packaging, docs, polish)
