@@ -1,0 +1,36 @@
+{
+  "name": "tynn",
+  "version": "0.1.0",
+  "description": "Tynn project management integration for Claude Code. Plan, build, and track work with the clever fox.",
+  "author": "Tynn.ai",
+  "homepage": "https://tynn.ai",
+  "repository": "https://github.com/Renaissance-Analytics/tynn-claude-tooling",
+  "keywords": [
+    "project-management",
+    "workflow",
+    "planning",
+    "tasks",
+    "agile"
+  ],
+  "skills": [
+    "skills/setup.md",
+    "skills/think.md",
+    "skills/build.md",
+    "skills/wish.md"
+  ],
+  "hooks": [
+    "hooks/session-start.md"
+  ],
+  "agents": [],
+  "mcp": {
+    "servers": {
+      "tynn": {
+        "type": "sse",
+        "url": "${TYNN_API_URL:-https://app.tynn.ai}/mcp/tynn",
+        "headers": {
+          "Authorization": "Bearer ${TYNN_API_KEY}"
+        }
+      }
+    }
+  }
+}
