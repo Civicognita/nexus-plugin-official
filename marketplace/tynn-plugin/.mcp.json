@@ -1,8 +1,8 @@
 {
   "mcpServers": {
     "tynn-mcp": {
-      "type": "sse",
-      "url": "${TYNN_API_URL:-https://app.tynn.ai}/mcp/tynn",
+      "type": "http",
+      "url": "${TYNN_API_URL:-https://tynn.ai}/mcp/tynn",
       "headers": {
         "Authorization": "Bearer ${TYNN_API_KEY}"
       }
