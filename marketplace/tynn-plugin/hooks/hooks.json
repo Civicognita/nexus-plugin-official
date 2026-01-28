@@ -1,0 +1,25 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Load Tynn project context. Try calling next() to get current work. If Tynn MCP is not available, check if demo mode is active by looking for .tynn/ directory. Report a brief 3-5 line summary of current work context or connection status. Never block or ask questions - just report status."
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Check if this was a git commit. If the output shows a successful commit with task references (t123, #123, task-123), update Tynn: 'closes/fixes' keywords mean move to QA, 'wip/start' means start task. Report briefly: 'Tynn: t123 → QA' or skip silently if no task references. $ARGUMENTS"
+          }
+        ]
+      }
+    ]
+  }
+}

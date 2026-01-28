@@ -1,0 +1,20 @@
+{
+  "name": "tynn",
+  "version": "0.2.0",
+  "description": "Tynn project management integration for Claude Code. Plan, build, and track work with the clever fox.",
+  "author": {
+    "name": "Tynn.ai",
+    "email": "hello@tynn.ai"
+  },
+  "license": "MIT",
+  "homepage": "https://tynn.ai",
+  "repository": "https://github.com/Civicognita/nexus-plugin-official",
+  "keywords": [
+    "project-management",
+    "workflow",
+    "planning",
+    "tasks",
+    "agile",
+    "tynn"
+  ]
+}
