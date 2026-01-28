@@ -12,7 +12,7 @@
   "plugins": [
     {
       "name": "tynn",
-      "source": "./tynn-plugin",
+      "source": "tynn-plugin",
       "description": "Tynn project management integration for Claude Code. Plan, build, and track work with the clever fox.",
       "version": "0.2.0",
       "author": {
