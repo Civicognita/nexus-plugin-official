@@ -36,12 +36,22 @@ tynn-claude-tooling/
 | think | `/tynn think` | Planning mode — create/organize work |
 | build | `/tynn build` | Execution mode — implement and track |
 | wish | `/tynn wish` | Quick idea/bug/chore capture |
+| sync | `/tynn sync` | Migrate demo mode data to Tynn |
+| vip | `/tynn vip` | Hotfix mode — urgent unscoped work |
+| audit | `/tynn audit` | Security review — findings and recommendations |
 
 ### Hooks
 
 | Hook | Event | Purpose |
 |------|-------|---------|
 | session-start | SessionStart | Auto-load project context |
+| post-commit | PostToolUse | Auto-update tasks from commit messages |
+
+### Agents
+
+| Agent | Purpose |
+|-------|---------|
+| tynn-assistant | Proactive workflow guidance, scope creep detection |
 
 ## Design Principles
 
@@ -55,5 +65,5 @@ tynn-claude-tooling/
 
 - [x] Phase 1: Core plugin (manifest, setup/think/build/wish skills, session-start hook)
 - [x] Phase 2: Demo mode (local storage, TYNN.md sync, migration)
-- [ ] Phase 3: Advanced (VIP, Audit skills, post-commit hook, tynn-assistant agent)
+- [x] Phase 3: Advanced (VIP, Audit skills, post-commit hook, tynn-assistant agent)
 - [ ] Phase 4: Marketplace (packaging, docs, polish)

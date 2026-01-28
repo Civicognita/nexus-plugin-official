@@ -1,6 +1,6 @@
 {
   "name": "tynn",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Tynn project management integration for Claude Code. Plan, build, and track work with the clever fox.",
   "author": "Tynn.ai",
   "homepage": "https://tynn.ai",
@@ -17,12 +17,17 @@
     "skills/think.md",
     "skills/build.md",
     "skills/wish.md",
-    "skills/sync.md"
+    "skills/sync.md",
+    "skills/vip.md",
+    "skills/audit.md"
   ],
   "hooks": [
-    "hooks/session-start.md"
+    "hooks/session-start.md",
+    "hooks/post-commit.md"
   ],
-  "agents": [],
+  "agents": [
+    "agents/tynn-assistant.md"
+  ],
   "mcp": {
     "servers": {
       "tynn": {
