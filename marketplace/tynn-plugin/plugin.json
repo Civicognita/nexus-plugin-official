@@ -3,8 +3,11 @@
   "version": "0.2.0",
   "description": "Tynn project management integration for Claude Code. Plan, build, and track work with the clever fox.",
   "author": "Tynn.ai",
+  "license": "MIT",
   "homepage": "https://tynn.ai",
   "repository": "https://github.com/Renaissance-Analytics/tynn-claude-tooling",
+  "documentation": "https://docs.tynn.ai/claude-code",
+  "icon": "https://tynn.ai/assets/tynn-fox-icon.png",
   "keywords": [
     "project-management",
     "workflow",
