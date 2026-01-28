@@ -28,17 +28,31 @@ Run `/tynn think` to plan or `/tynn build` to execute.
 
 ### If Tynn MCP is NOT Available
 
-Check for demo mode (`.tynn/` directory exists):
+Check for demo mode:
 
-**Demo mode active:**
+```bash
+${CLAUDE_PLUGIN_ROOT}/lib/demo-mode/storage.sh is-active
 ```
-Tynn (demo mode): [count] tasks, [count] wishes tracked locally.
+
+**If demo mode is active** (returns "true"):
+
+Get counts:
+```bash
+TASKS=$(${CLAUDE_PLUGIN_ROOT}/lib/demo-mode/storage.sh list-tasks | jq '.tasks | length')
+WISHES=$(${CLAUDE_PLUGIN_ROOT}/lib/demo-mode/storage.sh list-wishes | jq '.wishes | length')
+```
+
+Output:
+```
+Tynn (demo mode): [TASKS] tasks, [WISHES] wishes tracked locally.
 Run `/tynn setup` to connect to Tynn, or `/tynn sync` to migrate.
 ```
 
-**No configuration:**
+**If demo mode is NOT active** (returns "false"):
+
 ```
-Tynn available but not configured. Run `/tynn setup` to get started.
+Tynn plugin installed but not configured.
+Run `/tynn setup` to connect your account or start demo mode.
 ```
 
 ## Implementation

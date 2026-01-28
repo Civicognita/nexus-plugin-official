@@ -52,17 +52,45 @@ If successful:
 
 ## Demo Mode
 
-If user chooses demo mode:
+If user chooses demo mode, initialize local storage:
+
+```bash
+${CLAUDE_PLUGIN_ROOT}/lib/demo-mode/storage.sh init
+```
+
+This creates:
+- `.tynn/tasks.json` — Task storage
+- `.tynn/wishes.json` — Wish storage
+- `TYNN.md` — Human-readable markdown view
+
+Then confirm:
 > "Demo mode activated! I'll track your tasks and wishes locally in `.tynn/` and `TYNN.md`.
 >
-> When you're ready to upgrade, run `/tynn sync` to migrate your data to a Tynn account.
+> Quick commands:
+> - `/tynn think` — Plan and create tasks
+> - `/tynn build` — Work on tasks and update status
+> - `/tynn wish` — Capture ideas quickly
+> - `/tynn sync` — Migrate to Tynn when ready
 >
 > What would you like to work on?"
 
-Create the local storage structure:
-- `.tynn/tasks.json`
-- `.tynn/wishes.json`
-- `TYNN.md`
+## Check Existing Demo Mode
+
+If `.tynn/` directory already exists, demo mode is already active:
+
+```bash
+${CLAUDE_PLUGIN_ROOT}/lib/demo-mode/storage.sh is-active
+```
+
+If active, show current status:
+```bash
+${CLAUDE_PLUGIN_ROOT}/lib/demo-mode/storage.sh list-tasks
+${CLAUDE_PLUGIN_ROOT}/lib/demo-mode/storage.sh list-wishes
+```
+
+> "Demo mode is already set up! You have **[X] tasks** and **[Y] wishes** tracked locally.
+>
+> Want to connect to Tynn now, or keep using demo mode?"
 
 ## Persona
 

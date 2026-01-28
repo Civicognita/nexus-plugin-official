@@ -16,7 +16,8 @@
     "skills/setup.md",
     "skills/think.md",
     "skills/build.md",
-    "skills/wish.md"
+    "skills/wish.md",
+    "skills/sync.md"
   ],
   "hooks": [
     "hooks/session-start.md"

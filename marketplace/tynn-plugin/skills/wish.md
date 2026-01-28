@@ -71,9 +71,37 @@ If you can't determine the type, ask ONE question:
 
 Then capture immediately.
 
-## Demo Mode
+## Demo Mode Fallback
 
-If Tynn MCP is not available, store locally:
-1. Add to `.tynn/wishes.json`
-2. Update `TYNN.md` with the new wish
-3. Confirm: "Captured locally! Run `/tynn sync` when you're ready to move to Tynn."
+If Tynn MCP tools are not available (no `iwish` tool), use local storage:
+
+### Step 1: Check/Initialize Demo Mode
+
+```bash
+# Initialize if needed
+if [[ ! -d ".tynn" ]]; then
+    ${CLAUDE_PLUGIN_ROOT}/lib/demo-mode/storage.sh init
+fi
+```
+
+### Step 2: Add Wish Locally
+
+```bash
+${CLAUDE_PLUGIN_ROOT}/lib/demo-mode/storage.sh add-wish "TITLE" "TYPE" "DESCRIPTION"
+```
+
+Where TYPE is one of: `enhancement`, `fix`, `chore`, `docs`, `security`, `deprecation`
+
+### Step 3: Confirm
+
+> "Captured locally! ✨ **[wish title]** — [type]
+>
+> (Demo mode — run `/tynn sync` to migrate to Tynn)
+>
+> Back to what you were doing?"
+
+## Mode Detection
+
+1. First, try to use `iwish()` MCP tool
+2. If that fails or isn't available, fall back to demo mode
+3. Be transparent about which mode is active

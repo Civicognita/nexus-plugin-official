@@ -111,6 +111,50 @@ Keep workflow notes short:
 
 Only add detailed comments when capturing important rationale or trade-offs.
 
+## Demo Mode Fallback
+
+If Tynn MCP tools are not available, use local storage:
+
+### List Available Tasks
+
+```bash
+${CLAUDE_PLUGIN_ROOT}/lib/demo-mode/storage.sh list-tasks
+```
+
+Parse the JSON to show tasks by status.
+
+### Update Task Status
+
+```bash
+# Start a task
+${CLAUDE_PLUGIN_ROOT}/lib/demo-mode/storage.sh update-task "local-123" "doing"
+
+# Move to QA
+${CLAUDE_PLUGIN_ROOT}/lib/demo-mode/storage.sh update-task "local-123" "qa"
+
+# Complete
+${CLAUDE_PLUGIN_ROOT}/lib/demo-mode/storage.sh update-task "local-123" "done"
+```
+
+### Demo Mode Status Values
+
+| Status | Meaning |
+|--------|---------|
+| backlog | Not started |
+| doing | In progress |
+| qa | Ready for review |
+| done | Completed |
+
+### Capture Discoveries
+
+If you find new work while building:
+
+```bash
+${CLAUDE_PLUGIN_ROOT}/lib/demo-mode/storage.sh add-wish "Title" "enhancement" "Description"
+```
+
+> "Running in demo mode — task status updated locally. Run `/tynn sync` to migrate to Tynn."
+
 ## End Each Response With Status
 
 After building:

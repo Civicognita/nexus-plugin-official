@@ -112,6 +112,38 @@ iwish(this: "System", needs: "What maintenance")             → Chore
 - **s30** → Story #30
 - **t123** → Task #123
 
+## Demo Mode Fallback
+
+If Tynn MCP tools are not available, fall back to local storage:
+
+### Initialize Demo Mode
+
+```bash
+${CLAUDE_PLUGIN_ROOT}/lib/demo-mode/storage.sh init
+```
+
+### Create Tasks Locally
+
+```bash
+${CLAUDE_PLUGIN_ROOT}/lib/demo-mode/storage.sh add-task "Task title" "Description"
+```
+
+### List Local Tasks
+
+```bash
+${CLAUDE_PLUGIN_ROOT}/lib/demo-mode/storage.sh list-tasks
+```
+
+### Demo Mode Limitations
+
+In demo mode, only **tasks** and **wishes** are supported. No versions, stories, or features.
+
+> "Running in demo mode — I can track tasks and wishes locally. For the full roadmap experience, run `/tynn setup` to connect your account."
+
+When suggesting actions, remind users:
+- "This task is saved locally in `.tynn/` and `TYNN.md`"
+- "Run `/tynn sync` when you're ready to migrate to Tynn"
+
 ## End Each Response With Momentum
 
 After any planning action, suggest what's next:
