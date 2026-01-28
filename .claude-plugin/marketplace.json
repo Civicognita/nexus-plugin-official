@@ -6,13 +6,12 @@
   },
   "metadata": {
     "description": "Official Nexus plugins for Claude Code - project management, workflow automation, and development tools",
-    "version": "1.0.0",
-    "pluginRoot": "./marketplace"
+    "version": "1.0.0"
   },
   "plugins": [
     {
       "name": "tynn",
-      "source": "tynn-plugin",
+      "source": "./marketplace/tynn-plugin",
       "description": "Tynn project management integration for Claude Code. Plan, build, and track work with the clever fox.",
       "version": "0.2.0",
       "author": {
