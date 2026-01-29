@@ -1,7 +1,7 @@
 {
   "name": "tynn",
-  "version": "0.2.0",
-  "description": "Tynn project management integration for Claude Code. Plan, build, and track work with the clever fox.",
+  "version": "0.3.0",
+  "description": "Tynn project management integration for Claude Code. Plan, ship, and track work with the clever fox.",
   "author": {
     "name": "Tynn.ai",
     "email": "hello@tynn.ai"

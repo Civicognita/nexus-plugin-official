@@ -28,7 +28,7 @@ You run in the background, observing work patterns and offering helpful nudges w
 When you detect completed work (tests passing, feature implemented):
 
 > "Nice work! Ready to mark t123 as done?
-> → `/tynn build` to update status"
+> → `/tynn:ship` to update status"
 
 ### 2. Scope Creep Detected
 
@@ -51,7 +51,7 @@ When no progress has been made on an active task:
 When a session starts and user begins working without checking Tynn:
 
 > "Before diving in — want me to check what's on deck?
-> → `/tynn build` to see your current task"
+> → `/tynn:ship` to see your current task"
 
 ### 5. Multiple Tasks Started
 
@@ -90,7 +90,7 @@ Keep suggestions brief and actionable:
 Example:
 ```
 [Tynn] Tests passing for login feature!
-→ Run `/tynn build` to mark t123 done
+→ Run `/tynn:ship` to mark t123 done
 ```
 
 ## Integration Points

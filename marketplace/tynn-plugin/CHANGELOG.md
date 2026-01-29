@@ -2,6 +2,26 @@
 
 All notable changes to the Tynn plugin for Claude Code.
 
+## [0.3.0] - 2026-01-29
+
+### Changed
+- **Skill redesign** — Renamed all skills to avoid collision with Tynn MCP server prompts
+  - `think` → `plan` — Organize roadmap, versions, stories, tasks
+  - `build` → `ship` — Execute work, implement code, update status
+  - `wish` → `capture` — Quick idea/bug/chore capture
+  - `vip` → `triage` — Urgent hotfix management
+  - `audit` → `secure` — Security review with findings
+- **Demo mode expanded** — Now supports versions, stories, tasks, wishes, and features locally
+- **Entry flow** — All mode skills now detect connected vs. demo mode automatically
+- **Skill invocation** — Uses colon syntax (`/tynn:plan`, `/tynn:ship`) for plugin namespace clarity
+
+### Added
+- **Status skill** (`/tynn:status`) — Quick project pulse combining Tynn data + git state + session awareness
+- **Handoff skill** (`/tynn:handoff`) — Session continuity notes for async work pickup
+- **Onboard skill** (`/tynn:onboard`) — New contributor project walkthrough
+- **Extended storage commands** — `add-version`, `add-story`, `add-feature`, `transition`, `summary`, `session-log`
+- **New storage files** — `versions.json`, `stories.json`, `features.json`, `config.json`, `session.log`
+
 ## [0.2.0] - 2025-01-28
 
 ### Added

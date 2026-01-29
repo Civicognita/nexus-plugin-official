@@ -11,7 +11,7 @@ You want to add user authentication to your app.
 
 **1. Plan the work**
 ```
-/tynn think
+/tynn:plan
 ```
 
 > "I need to add user authentication with email/password and OAuth."
@@ -28,7 +28,7 @@ Story: User Authentication
 
 **2. Start building**
 ```
-/tynn build
+/tynn:ship
 ```
 
 > "What's my first task?"
@@ -60,7 +60,7 @@ User reports: "Login fails when password has special characters"
 
 **1. Capture the bug**
 ```
-/tynn wish login doesn't accept special characters in password
+/tynn:capture login doesn't accept special characters in password
 ```
 
 Tynn creates a wish:
@@ -68,14 +68,14 @@ Tynn creates a wish:
 
 **2. Check if it's urgent**
 
-If urgent, use VIP mode:
+If urgent, use triage mode:
 ```
-/tynn vip
+/tynn:triage
 ```
 
 **3. Fix and track**
 ```
-/tynn build
+/tynn:ship
 ```
 
 Work on the fix, commit:
@@ -94,7 +94,7 @@ Before launch, you need a security review.
 
 **1. Start the audit**
 ```
-/tynn audit
+/tynn:secure
 ```
 
 **2. Tynn systematically reviews:**
@@ -142,13 +142,13 @@ You're evaluating Tynn without an account.
 
 **1. Start demo mode**
 ```
-/tynn setup
+/tynn:setup
 ```
 > "use demo mode"
 
 **2. Create tasks locally**
 ```
-/tynn think
+/tynn:plan
 ```
 > "I need to build a todo app"
 
@@ -156,14 +156,14 @@ Tasks saved to `.tynn/tasks.json` and visible in `TYNN.md`.
 
 **3. Work and update**
 ```
-/tynn build
+/tynn:ship
 ```
 
 Update task status — changes sync to `TYNN.md`.
 
 **4. Ready to upgrade?**
 ```
-/tynn sync
+/tynn:sync
 ```
 
 Migrates your local tasks and wishes to your new Tynn account.
@@ -184,7 +184,7 @@ You're working on t101 (auth schema) but notice the API could use refactoring.
 
 **2. Capture without losing context**
 ```
-/tynn wish API controller needs refactoring for consistency
+/tynn:capture API controller needs refactoring for consistency
 ```
 
 **3. Continue original task**
@@ -193,36 +193,46 @@ The refactoring is captured for later. You stay focused on auth schema.
 
 ---
 
-## Example 6: Team Handoff
+## Example 6: Session Handoff
 
 ### Scenario
-You finished some tasks, teammate will continue tomorrow.
+You finished some tasks, need to wrap up for the day.
 
 ### Workflow
 
-**1. Update status**
+**1. Document your session**
 ```
-/tynn build
-```
-> "Mark t101 and t102 as done, t103 is in progress"
-
-**2. Add context**
-
-Tynn adds comments with rationale:
-```
-create(a: "comment", because: "Auth schema done. Note: using ULIDs for user IDs for future sharding.", on: {type: "task", id: "..."})
+/tynn:handoff
 ```
 
-**3. Teammate picks up**
+Tynn generates a structured handoff:
+```
+## Session Handoff
+
+### Done
+- t101 — Auth database schema
+- t102 — Email/password login
+
+### In Progress
+- t103 — OAuth providers (branch: feature/oauth, 60% done)
+
+### Blockers
+- None
+
+### Next Steps
+1. Finish Google OAuth integration in t103
+2. Start t104 — Login/register UI
+3. Review the auth middleware approach
+```
+
+**2. Teammate picks up**
 
 Next day, they run:
 ```
-/tynn build
+/tynn:status
 ```
 
-Tynn shows: `t103 - Add OAuth providers (in progress)`
-
-With full context from your comments.
+Tynn shows the full project pulse with handoff context.
 
 ---
 
@@ -230,10 +240,12 @@ With full context from your comments.
 
 | Want to... | Command |
 |------------|---------|
-| Plan new work | `/tynn think` |
-| Start coding | `/tynn build` |
-| Capture idea | `/tynn wish <description>` |
-| Handle hotfix | `/tynn vip` |
-| Security review | `/tynn audit` |
-| Migrate to Tynn | `/tynn sync` |
-| Check status | Session auto-loads context |
+| Plan new work | `/tynn:plan` |
+| Start coding | `/tynn:ship` |
+| Capture idea | `/tynn:capture <description>` |
+| Handle hotfix | `/tynn:triage` |
+| Security review | `/tynn:secure` |
+| Project pulse | `/tynn:status` |
+| Wrap up session | `/tynn:handoff` |
+| New to project | `/tynn:onboard` |
+| Migrate to Tynn | `/tynn:sync` |

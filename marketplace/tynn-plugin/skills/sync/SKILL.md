@@ -1,6 +1,6 @@
 ---
 name: sync
-description: Migrate demo mode data to your Tynn account
+description: Migrate demo mode data to your Tynn account — ready to go live
 ---
 
 # Tynn Sync
@@ -9,31 +9,34 @@ You are **Tynn** — helping the user graduate from demo mode to the real thing.
 
 > "Done is the engine of more." — Cult of Done Manifesto
 
-Time to level up! Let's move their local work into Tynn proper.
+Ready to go live. Let's move local work into Tynn proper.
 
 ## Prerequisites
 
 Before syncing, the user needs:
 1. A Tynn account (sign up at tynn.ai)
-2. API key configured (run `/tynn setup` if not done)
+2. API key configured (run `/tynn:setup` if not done)
 3. A target project in Tynn to receive the data
 
 ## Workflow
 
 ### Step 1: Check Demo Mode Data
 
-First, check what exists locally:
+Check what exists locally:
 
 ```bash
 # Check if demo mode is active
 ${CLAUDE_PLUGIN_ROOT}/lib/demo-mode/storage.sh is-active
+
+# Get summary of local data
+${CLAUDE_PLUGIN_ROOT}/lib/demo-mode/storage.sh summary
 
 # Export current data
 ${CLAUDE_PLUGIN_ROOT}/lib/demo-mode/storage.sh export
 ```
 
 Show the user what will be migrated:
-> "Found **[X] tasks** and **[Y] wishes** in demo mode. Ready to migrate these to Tynn?"
+> "Found **[X] tasks**, **[Y] stories**, and **[Z] wishes** in demo mode. Ready to migrate these to Tynn?"
 
 ### Step 2: Verify Tynn Connection
 
@@ -43,7 +46,7 @@ project()  → Should return project details
 ```
 
 If not connected:
-> "I can't reach Tynn yet. Run `/tynn setup` first to connect your account."
+> "I can't reach Tynn yet. Run `/tynn:setup` first to connect your account."
 
 ### Step 3: Get Target Context
 
@@ -54,22 +57,33 @@ find(a: "version")        → List available versions
 find(a: "story")          → List available stories
 ```
 
-> "Where should I put these tasks?
-> 1. **Active story**: s[X] — [title]
-> 2. **New story**: Create a fresh story for migrated items
-> 3. **Pick a story**: Let me choose from the list"
+> "Where should I put these items?
+> 1. **Active version**: v{X} — {title}
+> 2. **New version**: Create a fresh version for migrated items
+> 3. **Pick a version**: Let me choose from the list"
 
-### Step 4: Migrate Tasks
+### Step 4: Migrate Versions and Stories
+
+For local versions, create in Tynn:
+```
+create(a: "version", title: "[version title]", because: "[version description]", with: {number: "[number]"})
+```
+
+For local stories, create in Tynn:
+```
+create(a: "story", title: "[story title]", because: "[description]", on: {version_id: "[target version]"})
+```
+
+### Step 5: Migrate Tasks
 
 For each local task, create in Tynn:
-
 ```
 create(
   a: "task",
   title: "[task title]",
   because: "[task description]",
   on: {story_id: "[target story]"},
-  with: {status: "[mapped status]"}
+  with: {status: "backlog"}
 )
 ```
 
@@ -81,12 +95,11 @@ create(
 | qa | backlog (will need workflow) |
 | done | backlog (mark as done after) |
 
-Note: Tynn enforces workflow, so we create in backlog then transition.
+Note: Tynn enforces workflow, so create in backlog then transition.
 
-### Step 5: Migrate Wishes
+### Step 6: Migrate Wishes
 
 For each local wish, create in Tynn:
-
 ```
 iwish(
   this: "[wish title]",
@@ -105,13 +118,15 @@ iwish(
 | security | secure |
 | deprecation | remove |
 
-### Step 6: Clean Up
+### Step 7: Clean Up
 
 After successful migration:
 
 > "Migration complete!
-> - **[X] tasks** created in story s[Y]
-> - **[Z] wishes** captured
+> - **[X] versions** created
+> - **[Y] stories** created
+> - **[Z] tasks** created
+> - **[W] wishes** captured
 >
 > Want me to remove the local demo files? (`.tynn/` and `TYNN.md`)"
 
@@ -133,7 +148,7 @@ If no:
 
 **Connection lost:**
 > "Lost connection to Tynn. [X] items already migrated, [Y] remaining.
-> Run `/tynn sync` again to continue."
+> Run `/tynn:sync` again to continue."
 
 ## Persona
 

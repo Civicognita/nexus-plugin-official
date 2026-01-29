@@ -12,10 +12,23 @@ Tynn Claude Tooling — Claude Code plugins and marketplace integrations for Tyn
 tynn-claude-tooling/
 ├── marketplace/
 │   └── tynn-plugin/          # Main Tynn plugin for Claude marketplace
-│       ├── plugin.json       # Plugin manifest
-│       ├── skills/           # Slash commands (/tynn think, /tynn build, etc.)
+│       ├── .claude-plugin/
+│       │   └── plugin.json   # Plugin manifest (v0.3.0)
+│       ├── skills/           # Slash commands (/tynn:plan, /tynn:ship, etc.)
+│       │   ├── plan/         # Planning mode
+│       │   ├── ship/         # Execution mode
+│       │   ├── capture/      # Quick idea capture
+│       │   ├── triage/       # Hotfix mode
+│       │   ├── secure/       # Security review
+│       │   ├── setup/        # Connection wizard
+│       │   ├── sync/         # Demo→Tynn migration
+│       │   ├── status/       # Project pulse
+│       │   ├── handoff/      # Session continuity
+│       │   └── onboard/      # Contributor orientation
 │       ├── hooks/            # Event hooks (session-start, post-commit)
-│       └── agents/           # Proactive agents (future)
+│       ├── agents/           # Proactive agents (tynn-assistant)
+│       ├── lib/demo-mode/    # Demo mode storage utilities
+│       └── examples/         # Workflow examples
 └── docs/
     └── plans/                # Design documents
 ```
@@ -28,17 +41,32 @@ tynn-claude-tooling/
 2. Ensure `TYNN_API_KEY` is set in your environment or Claude Code settings
 3. Restart Claude Code to load the plugin
 
-### Skills
+### Skills (v0.3.0)
+
+**Mode Skills** — core work modes with guardrails
 
 | Skill | Command | Purpose |
 |-------|---------|---------|
-| setup | `/tynn setup` | Configure Tynn connection or demo mode |
-| think | `/tynn think` | Planning mode — create/organize work |
-| build | `/tynn build` | Execution mode — implement and track |
-| wish | `/tynn wish` | Quick idea/bug/chore capture |
-| sync | `/tynn sync` | Migrate demo mode data to Tynn |
-| vip | `/tynn vip` | Hotfix mode — urgent unscoped work |
-| audit | `/tynn audit` | Security review — findings and recommendations |
+| plan | `/tynn:plan` | Planning mode — create versions, stories, tasks, features |
+| ship | `/tynn:ship` | Execution mode — implement code and update status |
+| capture | `/tynn:capture` | Quick idea/bug/chore capture |
+| triage | `/tynn:triage` | Hotfix mode — urgent VIP work (connected only) |
+| secure | `/tynn:secure` | Security review — systematic audit with findings |
+
+**Lifecycle Skills** — setup and migration
+
+| Skill | Command | Purpose |
+|-------|---------|---------|
+| setup | `/tynn:setup` | Configure Tynn connection or demo mode |
+| sync | `/tynn:sync` | Migrate demo mode data to Tynn account |
+
+**Context Skills** — awareness and continuity
+
+| Skill | Command | Purpose |
+|-------|---------|---------|
+| status | `/tynn:status` | Project pulse — active work, git state, next steps |
+| handoff | `/tynn:handoff` | Session continuity — document progress for later |
+| onboard | `/tynn:onboard` | Contributor orientation — project walkthrough |
 
 ### Hooks
 
@@ -55,11 +83,13 @@ tynn-claude-tooling/
 
 ## Design Principles
 
-1. **Map to Tynn guides** — Skills mirror Tynn MCP resources (think-guide, build-guide)
-2. **Preserve persona** — The Tynn fox personality stays consistent
-3. **Respect guardrails** — Think mode can't write code; Build mode can't create work
-4. **Demo mode fallback** — Works locally without Tynn account
-5. **Keep momentum** — Every response should end with a next action
+1. **Action-verb naming** — Skills use action verbs (plan, ship, capture) to avoid collision with MCP server prompts
+2. **Colon namespace** — All commands use `/tynn:<skill>` syntax for plugin namespace clarity
+3. **Preserve persona** — The Tynn fox personality stays consistent across all skills
+4. **Respect guardrails** — Plan mode can't write code; Ship mode can't create work
+5. **Demo mode fallback** — Works locally without Tynn account (except triage, which requires connection)
+6. **Keep momentum** — Every response should end with a next action
+7. **Entry flow pattern** — All mode skills detect connected vs. demo mode automatically
 
 ## Implementation Phases
 
@@ -67,3 +97,4 @@ tynn-claude-tooling/
 - [x] Phase 2: Demo mode (local storage, TYNN.md sync, migration)
 - [x] Phase 3: Advanced (VIP, Audit skills, post-commit hook, tynn-assistant agent)
 - [x] Phase 4: Marketplace (packaging, docs, polish)
+- [x] Phase 5: Skill redesign v0.3.0 (10 skills, colon syntax, context skills, extended demo storage)

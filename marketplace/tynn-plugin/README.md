@@ -2,7 +2,7 @@
 
 > "Done is the engine of more." — Cult of Done Manifesto
 
-Plan, build, and track your work with **Tynn** — the clever fox who keeps you moving.
+Plan, ship, and track your work with **Tynn** — the clever fox who keeps you moving.
 
 ## What is Tynn?
 
@@ -22,7 +22,7 @@ Add this plugin to your Claude Code configuration.
 ### 2. Connect to Tynn
 
 ```
-/tynn setup
+/tynn:setup
 ```
 
 This will guide you through:
@@ -32,33 +32,48 @@ This will guide you through:
 ### 3. Start Working
 
 ```
-/tynn think    # Plan and organize work
-/tynn build    # Execute tasks and track progress
-/tynn wish     # Capture ideas quickly
+/tynn:plan       # Organize roadmap and work items
+/tynn:ship       # Execute tasks and ship code
+/tynn:capture    # Capture ideas quickly
 ```
 
 ## Commands
 
+### Mode Skills
+
 | Command | Purpose |
 |---------|---------|
-| `/tynn setup` | Configure connection or start demo mode |
-| `/tynn think` | Planning mode — create versions, stories, tasks |
-| `/tynn build` | Execution mode — implement and update status |
-| `/tynn wish` | Quick capture — ideas, bugs, chores |
-| `/tynn sync` | Migrate demo data to Tynn account |
-| `/tynn vip` | Hotfix mode — urgent unscoped work |
-| `/tynn audit` | Security review — systematic audit |
+| `/tynn:plan` | Planning mode — create versions, stories, tasks |
+| `/tynn:ship` | Execution mode — implement and update status |
+| `/tynn:capture` | Quick capture — ideas, bugs, chores |
+| `/tynn:triage` | Hotfix mode — urgent VIP work |
+| `/tynn:secure` | Security review — systematic audit |
+
+### Lifecycle Skills
+
+| Command | Purpose |
+|---------|---------|
+| `/tynn:setup` | Configure connection or start demo mode |
+| `/tynn:sync` | Migrate demo data to Tynn account |
+
+### Context Skills
+
+| Command | Purpose |
+|---------|---------|
+| `/tynn:status` | Project pulse — active work, git state, next steps |
+| `/tynn:handoff` | Session continuity — document progress for later |
+| `/tynn:onboard` | Contributor orientation — project walkthrough |
 
 ## Demo Mode
 
 Don't have a Tynn account? No problem! Demo mode lets you:
 
-- Track tasks locally in `.tynn/` directory
+- Track versions, stories, tasks, wishes, and features locally in `.tynn/`
 - See your work in human-readable `TYNN.md`
 - Migrate to Tynn when you're ready
 
 ```
-/tynn setup
+/tynn:setup
 > "use demo mode"
 ```
 
@@ -85,38 +100,38 @@ The Tynn assistant watches for:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                        THINK                                 │
-│   Plan work: versions → stories → tasks                     │
-│   /tynn think                                               │
+│                        PLAN                                  │
+│   Organize work: versions → stories → tasks                 │
+│   /tynn:plan                                                │
 └──────────────────────────┬──────────────────────────────────┘
                            │
                            ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                        BUILD                                 │
+│                        SHIP                                  │
 │   Execute: backlog → doing → qa → done                      │
-│   /tynn build                                               │
+│   /tynn:ship                                                │
 └──────────────────────────┬──────────────────────────────────┘
                            │
                            ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                        WISH                                  │
-│   Capture discoveries without losing focus                  │
-│   /tynn wish "login should support OAuth"                   │
+│                       CAPTURE                                │
+│   Catch discoveries without losing focus                    │
+│   /tynn:capture "login should support OAuth"                │
 └─────────────────────────────────────────────────────────────┘
 ```
 
 ## Modes
 
-### Think Mode (Planning)
+### Plan Mode (Planning)
 Create and organize work. **Cannot write code** — keeps you in planning mindset.
 
-### Build Mode (Execution)
+### Ship Mode (Execution)
 Implement tasks and track progress. **Cannot create new work** — keeps you focused.
 
-### VIP Mode (Hotfixes)
-Handle urgent work that can't wait. Streamlined interface for speed.
+### Triage Mode (Hotfixes)
+Handle urgent VIP work that can't wait. Streamlined interface for speed.
 
-### Audit Mode (Security)
+### Secure Mode (Security)
 Systematic security review with severity-ranked findings.
 
 ## Configuration
@@ -128,15 +143,6 @@ Systematic security review with severity-ranked findings.
 | `TYNN_API_KEY` | Your Tynn API key |
 | `TYNN_API_URL` | Custom API URL (optional) |
 
-### Settings
-
-```json
-{
-  "tynn.autoCommitSync": true,
-  "tynn.assistant.enabled": true
-}
-```
-
 ## Requirements
 
 - Claude Code
@@ -147,7 +153,7 @@ Systematic security review with severity-ranked findings.
 
 - [Tynn.ai](https://tynn.ai) — Sign up for Tynn
 - [Documentation](https://docs.tynn.ai) — Full Tynn docs
-- [GitHub](https://github.com/Renaissance-Analytics/tynn-claude-tooling) — Source code
+- [GitHub](https://github.com/Civicognita/nexus-plugin-official) — Source code
 
 ## License
 
